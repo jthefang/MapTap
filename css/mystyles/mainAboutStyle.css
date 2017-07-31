@@ -1,0 +1,26 @@
+/******************************about.php************************/
+div#page_content{
+    height: auto; /*******change this value (remove it) if the elements in this div overflow web window height
+    this just basically makes the footer stay at the bottom of the fixed page********/
+    background-color: #F0F0F0;
+    /*border-bottom: .0625em solid #D9D9D9;*/
+    padding-top: 1em; /*spacing from header and add_story form*/
+    padding-bottom: 1em;
+}
+div#about_info{
+    width: 45%;
+    height: auto;
+    background-color: white;
+    border: .1em solid black;
+    font-family: 'Noto Serif Regular', Georgia, serif;
+    font-size: 1.5em;
+    padding: 0 20px;
+    border-radius: 6px;
+    border: 2px solid #A0C0C0; 
+
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    /* bring your own prefixes */
+    transform: translate(-50%, -50%);
+}

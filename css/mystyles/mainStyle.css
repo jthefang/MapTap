@@ -1,0 +1,809 @@
+/***** Table of Contents
+    Forms
+    Header (templates/header.php)
+        Logo
+        Navmenu
+        Facebook functions
+            fb user profile
+            fb logout
+            fb login
+    Footer
+    Fonts
+
+    1PX = .0625em
+****/
+
+html, body, div#container{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    font-family: "Noto Sans Regular", Arial, sans-serif;
+    color: #333;
+    background-color: #F0F0F0;
+}
+article, aside, figure, footer, header, nav, section {
+    display: block;
+}  
+
+/* unvisited link */
+a:link, :visited {
+    text-decoration: none;
+    color: #0066C0;
+}
+/* mouse over link */
+a:hover {
+    color: #0087FF;
+    text-decoration: none;
+}
+/* selected link */
+a:active {
+    color: black;
+}
+textarea{
+    resize: none;
+    padding: .4em;
+}
+
+/*---------------------button link--------------------*/
+a.buttonOne { /******************aquamarine**********************/
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #599bb3), color-stop(1, #408c99));
+    background: -moz-linear-gradient(top, #599bb3 5%, #408c99 100%);
+    background: -webkit-linear-gradient(top, #599bb3 5%, #408c99 100%);
+    background: -o-linear-gradient(top, #599bb3 5%, #408c99 100%);
+    background: -ms-linear-gradient(top, #599bb3 5%, #408c99 100%);
+    background: linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#599bb3', endColorstr='#408c99',GradientType=0);
+    background-color: #599bb3;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    display: inline-block;
+    cursor: pointer;
+    font-family: "Noto Sans Regular", "Lucida Grande", Tahoma, Verdana, Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    /*text-shadow: 0px 1px 0px #3d768a;*/
+
+    text-decoration: none;
+    border: none;
+    color: white; 
+    padding: 10px 20px;
+    outline: none;
+    font-size: 1em;    
+}
+a.buttonOne:hover {
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #408c99), color-stop(1, #599bb3));
+    background: -moz-linear-gradient(top, #4C95B0 5%, #2D7E8C 100%);
+    background: -webkit-linear-gradient(top, #4C95B0 5%, #2D7E8C 100%);
+    background: -o-linear-gradient(top, #4C95B0 5%, #2D7E8C 100%);
+    background: -ms-linear-gradient(top, #4C95B0 5%, #2D7E8C 100%);
+    background: linear-gradient(to bottom, #4C95B0 5%, #2D7E8C 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#408c99', endColorstr='#599bb3',GradientType=0);
+    background-color: #408c99;
+}
+a.buttonTwo { /*********************green************************/
+    background-color: #92C942;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    display: inline-block;
+    cursor: pointer;
+    font-family: "Noto Sans Regular", "Lucida Grande", Tahoma, Verdana, Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    text-decoration: none;
+    border: none;
+    color: white; 
+    padding: 9px 17px;
+    outline: none;
+    font-size: 1em;   
+}
+a.buttonTwo:hover {
+    background-color: #88BF37;
+}
+a.buttonOne:active, a.buttonTwo:active {
+    position: relative;
+    top: 1px;
+}
+
+img.img_button{
+    vertical-align: bottom;
+    height: 1.35em;
+    width: 1.35em;
+    margin-right: .4em; /*------spacing from span.link--------*/
+}
+span.button_message{
+}
+
+
+p.no_results{ /*when a query for a user returns no results, a no results message will show*/
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 0;
+}
+/************************************Forms***********************************/
+span.form_required{
+    color: red;
+    float: none; 
+    color: red;
+    font-size: .6em;
+    margin-left: .6em;
+    font-weight: normal;
+}
+p.error{
+    color: red;
+    font-size: 1em;
+}
+div.error{
+    display: none;
+    margin-bottom: .7em;
+    margin-left: .7em;
+    font-size: 1.4em;
+}
+ul.ul_error{
+    margin-top: 0;
+}
+li.error{
+    color: red;
+    font-size: .9em;
+}
+textarea{
+    font-family: "Noto Serif Regular", "Palatino Linotype", "Book Antiqua", Palatino, serif;
+}
+input[type=checkbox].form-checkbox {
+    /* Double-sized Checkboxes */
+    -ms-transform: scale(2); /* IE */
+    -moz-transform: scale(2); /* FF */
+    -webkit-transform: scale(2); /* Safari and Chrome */
+    -o-transform: scale(2); /* Opera */
+    vertical-align: middle;
+    cursor: pointer;
+}
+label.checkbox-label {
+    margin-left: .5em; 
+    cursor: pointer;
+}
+
+/***************************header div (templates/header.php)*************************/
+div#header{
+    width: auto;
+    height: 15%;
+    background-color:gray;
+    border: .1em solid black;
+    position: relative; /*to position the div#navbar_div at the bottom of the div*/
+}
+div#page_content{
+
+}
+div#logo{
+    height: auto;
+}
+
+/***************************Facebook login/logout buttons and the navmenu*****************/
+div#header_bar{
+    width: 100%;
+    background-color: #4692bb; /*#005994;*/
+}
+ul{
+    float: left;
+    display: inline-block;
+    padding-left: 0; /*1em;*/ /*default of 40 for some reason*/
+    margin: .8125em 0em; /*.71875em = height of the a links*/
+}
+ul#navbar_menu li {
+    display: inline;
+    list-style: none;
+}
+ul#navbar_menu li a { /*most of this is controlled by the "js/jquery.navbar.js" custom plugin, see also "js/myscripts/mainJS.js*/
+    display: inline;
+    padding: 1em;
+}
+img.navbar_icon{
+    vertical-align:middle;
+    height: 1.35em;
+    width: 1.35em;
+    margin-right: .8em; /*------spacing from span.navbar_link--------*/
+}
+span.navbar_link{
+    vertical-align:middle;
+    font-family: "Noto Sans Bold";
+}
+
+    /*----------------functions for the logged in user (appears on right side of header)------------------*/
+div#fb_user{
+    display: inline-block;
+    float: right;
+    width: auto;
+    height: auto;
+    margin-top: .1em;
+    margin-right: .2em;
+    margin-bottom: .2em;
+    /*border: .0625em solid rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+    background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzQ4NmJiNSIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzMzNGU4NyIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
+    background-size: 100%;
+    background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #486bb5), color-stop(100%, #334e87));
+    background-image: -moz-linear-gradient(top, #486bb5 0%, #334e87 100%);
+    background-image: -webkit-linear-gradient(top, #486bb5 0%, #334e87 100%);
+    background-image: linear-gradient(to bottom, #486bb5 0%, #334e87 100%);
+    box-shadow: inset 0 1px 3px rgba(255, 255, 255, 0.2);*/
+}
+
+a.fb_fxn_link{
+    text-decoration: none;
+}
+
+        /*----------------------notifications---------------------*/
+div#notifications{
+    display: inline;
+    position: relative;
+    cursor: pointer;
+    margin-right: .4em;
+}
+
+div.notifications_selected:after, .notifications_selected:before { /*triangle*/
+    bottom: -.7em;
+    right: .4em; /*horizontal positioning of triangle when notifications is selected*/
+    border: 1px solid rgba(100, 100, 100, .4);
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+}
+
+div.notifications_selected:after {
+    border: 1px solid transparent; /*backgroundcolor of the triangle container*/
+    border-bottom-color: white; /*background-color of the triangle*/
+    border-width: 10px;
+    margin-left: -10px;
+}
+div.notifications_selected:before {
+    border: 1px solid transparent; /*backgroundcolor of the triangle container*/
+    border-bottom-color: white; /*background-color of the triangle*/
+    border-width: 12px;
+    margin-left: -12px;
+}
+
+img#notifications_icon_image{ /*override some of img_button class*/
+    vertical-align: middle; 
+    margin: 0;
+}
+
+div#notifications_div{
+    display: none;
+    position: absolute;
+    right: -.5em;
+    background: rgba(255,255,255,.98);
+    background-color: #fff;
+    border: 1px solid rgba(100, 100, 100, .4);
+    border-top: 1px solid transparent;
+    -webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, .25);
+    height: auto;
+    width: 12.5em;
+    cursor: default;
+}
+
+        /*----------------------user profile options---------------------*/
+div#user_profile{
+    display: inline;
+    position: relative;
+    color: white;
+    width: 50%;
+    padding: 0.3em 0 .4em .8em;
+    margin-right: .3em;
+    border-left: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+div.user_profile_selected:after, .user_profile_selected:before {
+    bottom: -.625em;
+    right: .2em;
+    border: 1px solid rgba(100, 100, 100, .4);
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+}
+
+div.user_profile_selected:after {
+    border: 1px solid transparent; /*backgroundcolor of the triangle container*/
+    border-bottom-color: white; /*background-color of the triangle*/
+    border-width: 10px;
+    margin-left: -10px;
+}
+div.user_profile_selected:before {
+    border: 1px solid transparent; /*backgroundcolor of the triangle container*/
+    border-bottom-color: white; /*background-color of the triangle*/
+    border-width: 12px;
+    margin-left: -12px;
+}
+
+div#user_options_menu_div{
+    display: none;
+    position: absolute;
+    right: -.55em;
+    background: rgba(255,255,255,.98);
+    background-color: #fff;
+    border: 1px solid rgba(100, 100, 100, .4);
+    border-top: 1px solid transparent;
+    -webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, .25);
+    height: auto;
+    width: 12.5em;
+    cursor: default;
+}
+
+ul.user_list{
+    width: 100%;
+    padding-left: 0;
+    margin: .4375em 0;
+    list-style-type: none;
+}
+
+li.user_list_item{ /*these are set so that the element won't shift position when hovered*/
+    background-color: transparent;
+    border-top: 1px solid transparent;
+    border-bottom: 1px solid transparent;
+    height: auto;
+}
+li.action{
+    cursor: pointer;
+}
+li.action:hover{
+    background-color: #3E8BB5;/*#1067A1;*/
+    border-top: 1px solid #0077B8;/*#004D80;*/
+    border-bottom: 1px solid #0077B8;/*#004D80;*/
+}
+
+a.user_list_item_link{
+    font-size: .9em;
+    text-decoration: none;
+    color: #232937;
+    display: block;
+    font-family: "Noto Sans Regular", "Lucida Grande", Tahoma, Verdana, Arial, Helvetica, sans-serif;
+    height: 1.6em;
+    line-height: 1.6em;
+    padding: .1em 1em;
+}
+
+a.action:hover{
+    color: white;
+}
+
+img#fb_propic{
+    vertical-align:middle;
+    height: 1.6em;
+    width: 1.6em;
+}
+
+span.fb_title {
+    font-family: "Noto Sans Regular", "Lucida Grande", Tahoma, Verdana, Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 0.8125em;
+    color: #fff;
+    line-height: 40px;
+    padding: 0 .625em 0 .5em;
+    text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.5);
+}
+
+div.fb_user_button{
+    cursor: pointer;
+    padding: .3em;
+}
+
+div.fb_user_button:hover {
+    /*background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzQ4NmJiNSIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzIzM2I2YyIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');*/
+    background-size: 100%;
+    background-color: #3785B0;
+}
+
+div.fb_user_button_selected {
+    /*background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzQ4NmJiNSIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzIzM2I2YyIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');*/
+    background-size: 100%;
+    background-color: #3785B0;
+}
+
+    /*------------------------------facebook sign in button-----------------------------*/
+div.block_login { /*actually appears where the navbar div should*/
+    width: 11.75em;
+    padding-top: .33em;
+    padding-bottom: .125em;
+    padding-right: .25em;
+    display: inline-block;
+    float: right;
+}
+a#signin_btn{
+    float:right;
+}
+div.btn-fb-button {
+    width: 100%;
+    height: 1.875em;
+    border: .0625em solid rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+    background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzQ4NmJiNSIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzMzNGU4NyIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
+    background-size: 100%;
+    background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #486bb5), color-stop(100%, #334e87));
+    background-image: -moz-linear-gradient(top, #486bb5 0%, #334e87 100%);
+    background-image: -webkit-linear-gradient(top, #486bb5 0%, #334e87 100%);
+    background-image: linear-gradient(to bottom, #486bb5 0%, #334e87 100%);
+    box-shadow: inset 0 1px 3px rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+}
+div.btn-fb-button:hover {
+    background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzQ4NmJiNSIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzIzM2I2YyIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
+    background-size: 100%;
+    background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #486bb5), color-stop(100%, #233b6c));
+    background-image: -moz-linear-gradient(top, #486bb5 0%, #233b6c 100%);
+    background-image: -webkit-linear-gradient(top, #486bb5 0%, #233b6c 100%);
+    background-image: linear-gradient(to bottom, #486bb5 0%, #233b6c 100%);
+}
+div.btn-fb-button .icon {
+    background: url(http://s.cdpn.io/6035/fb_login_sprite.png) no-repeat;
+    width: .6875em;
+    height: 1.375em;
+    display: inline-block;
+    float: left;
+    margin: 3px 10px;
+}
+div.btn-fb-button .title {
+    font-family: "Lucida Grande", Tahoma, sans-serif;
+    font-weight: bold;
+    font-size: 0.8125em;
+    color: #fff;
+    line-height: 30px;
+    float: left;
+    padding: 0 10px;
+    text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.5);
+    box-shadow: -1px 0 0 rgba(255, 255, 255, 0.1);
+    border-left: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+/******-------------------------------------Footer--------------------------------------*/
+div#footer{
+    display: block;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    height: 1em;
+    margin: 0 auto;
+    padding: .4em 0em;
+    border-top: .0625em solid #D9D9D9;
+    background-color: white;
+}
+p#production_creds{
+    margin: auto;
+    margin-bottom: .3em;
+    text-align: center;
+    font-size: .77em;
+}
+
+/******************************Fonts********************************/
+/*
+    Opificio Neue
+    Bebas Neue
+    Mockup (a bunch of them)
+    PT Sans (a bunch)
+    Lato (a bunch of them)
+*/
+
+@font-face {
+    font-family: 'Opificio Neue';
+    src: url('../fonts/Opificio_Neue/opificio_neue-regular-webfont.eot');
+    src: url('../fonts/Opificio_Neue/opificio_neue-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/Opificio_Neue/opificio_neue-regular-webfont.woff2') format('woff2'),
+         url('../fonts/Opificio_Neue/opificio_neue-regular-webfont.woff') format('woff'),
+         url('../fonts/Opificio_Neue/opificio_neue-regular-webfont.ttf') format('truetype'),
+         url('../fonts/Opificio_Neue/opificio_neue-regular-webfont.svg#opificio_neueregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Bebas Neue';
+    src: url('../fonts/Bebas_Neue/bebasneue-webfont.eot');
+    src: url('../fonts/Bebas_Neue/bebasneue-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/Bebas_Neue/bebasneue-webfont.woff2') format('woff2'),
+         url('../fonts/Bebas_Neue/bebasneue-webfont.woff') format('woff'),
+         url('../fonts/Bebas_Neue/bebasneue-webfont.ttf') format('truetype'),
+         url('../fonts/Bebas_Neue/bebasneue-webfont.svg#bebas_neueregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/*------------------------Mockup fonts-------------------------*/
+@font-face {
+    font-family: 'Mockup Regular';
+    src: url('../fonts/Mockup/mockup-regular-webfont.eot');
+    src: url('../fonts/Mockup/mockup-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/Mockup/mockup-regular-webfont.woff2') format('woff2'),
+         url('../fonts/Mockup/mockup-regular-webfont.woff') format('woff'),
+         url('../fonts/Mockup/mockup-regular-webfont.ttf') format('truetype'),
+         url('../fonts/Mockup/mockup-regular-webfont.svg#mockupregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Mockup Bold';
+    src: url('../fonts/Mockup/mockup-bold-webfont.eot');
+    src: url('../fonts/Mockup/mockup-bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/Mockup/mockup-bold-webfont.woff2') format('woff2'),
+         url('../fonts/Mockup/mockup-bold-webfont.woff') format('woff'),
+         url('../fonts/Mockup/mockup-bold-webfont.ttf') format('truetype'),
+         url('../fonts/Mockup/mockup-bold-webfont.svg#mockupbold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Mockup Italic';
+    src: url('../fonts/Mockup/mockup-italic-webfont.eot');
+    src: url('../fonts/Mockup/mockup-italic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/Mockup/mockup-italic-webfont.woff2') format('woff2'),
+         url('../fonts/Mockup/mockup-italic-webfont.woff') format('woff'),
+         url('../fonts/Mockup/mockup-italic-webfont.ttf') format('truetype'),
+         url('../fonts/Mockup/mockup-italic-webfont.svg#mockupitalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Mockup Bold Italic';
+    src: url('../fonts/Mockup/mockup-bolditalic-webfont.eot');
+    src: url('../fonts/Mockup/mockup-bolditalic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/Mockup/mockup-bolditalic-webfont.woff2') format('woff2'),
+         url('../fonts/Mockup/mockup-bolditalic-webfont.woff') format('woff'),
+         url('../fonts/Mockup/mockup-bolditalic-webfont.ttf') format('truetype'),
+         url('../fonts/Mockup/mockup-bolditalic-webfont.svg#mockupbolditalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+ 
+/*-------------------------PT Sans----------------------------*/
+@font-face {
+    font-family: 'PT Sans Bold';
+    src: url('../fonts/PT_Sans/pt_sans-web-bold-webfont.eot');
+    src: url('../fonts/PT_Sans/pt_sans-web-bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/PT_Sans/pt_sans-web-bold-webfont.woff2') format('woff2'),
+         url('../fonts/PT_Sans/pt_sans-web-bold-webfont.woff') format('woff'),
+         url('../fonts/PT_Sans/pt_sans-web-bold-webfont.ttf') format('truetype'),
+         url('../fonts/PT_Sans/pt_sans-web-bold-webfont.svg#pt_sansbold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'PT Sans Regular';
+    src: url('../fonts/PT_Sans/pt_sans-web-regular-webfont.eot');
+    src: url('../fonts/PT_Sans/pt_sans-web-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/PT_Sans/pt_sans-web-regular-webfont.woff2') format('woff2'),
+         url('../fonts/PT_Sans/pt_sans-web-regular-webfont.woff') format('woff'),
+         url('../fonts/PT_Sans/pt_sans-web-regular-webfont.ttf') format('truetype'),
+         url('../fonts/PT_Sans/pt_sans-web-regular-webfont.svg#pt_sansregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'PT Sans Bold Italic';
+    src: url('../fonts/PT_Sans/pt_sans-web-bolditalic-webfont.eot');
+    src: url('../fonts/PT_Sans/pt_sans-web-bolditalic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/PT_Sans/pt_sans-web-bolditalic-webfont.woff2') format('woff2'),
+         url('../fonts/PT_Sans/pt_sans-web-bolditalic-webfont.woff') format('woff'),
+         url('../fonts/PT_Sans/pt_sans-web-bolditalic-webfont.ttf') format('truetype'),
+         url('../fonts/PT_Sans/pt_sans-web-bolditalic-webfont.svg#pt_sansbold_italic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'PT Sans Italic';
+    src: url('../fonts/PT_Sans/pt_sans-web-italic-webfont.eot');
+    src: url('../fonts/PT_Sans/pt_sans-web-italic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/PT_Sans/pt_sans-web-italic-webfont.woff2') format('woff2'),
+         url('../fonts/PT_Sans/pt_sans-web-italic-webfont.woff') format('woff'),
+         url('../fonts/PT_Sans/pt_sans-web-italic-webfont.ttf') format('truetype'),
+         url('../fonts/PT_Sans/pt_sans-web-italic-webfont.svg#pt_sansitalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/*-------------------------Bunch of Lato fonts---------------------------------*/
+@font-face {
+    font-family: 'Lato Regular';
+    src: url('../fonts/Lato/lato-regular-webfont.eot');
+    src: url('../fonts/Lato/lato-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/Lato/lato-regular-webfont.woff2') format('woff2'),
+         url('../fonts/Lato/lato-regular-webfont.woff') format('woff'),
+         url('../fonts/Lato/lato-regular-webfont.ttf') format('truetype'),
+         url('../fonts/Lato/lato-regular-webfont.svg#latoregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Lato Italic';
+    src: url('../fonts/Lato/lato-italic-webfont.eot');
+    src: url('../fonts/Lato/lato-italic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/Lato/lato-italic-webfont.woff2') format('woff2'),
+         url('../fonts/Lato/lato-italic-webfont.woff') format('woff'),
+         url('../fonts/Lato/lato-italic-webfont.ttf') format('truetype'),
+         url('../fonts/Lato/lato-italic-webfont.svg#latoitalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Lato Light';
+    src: url('../fonts/Lato/lato-light-webfont.eot');
+    src: url('../fonts/Lato/lato-light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/Lato/lato-light-webfont.woff2') format('woff2'),
+         url('../fonts/Lato/lato-light-webfont.woff') format('woff'),
+         url('../fonts/Lato/lato-light-webfont.ttf') format('truetype'),
+         url('../fonts/Lato/lato-light-webfont.svg#latolight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Lato Light Italic';
+    src: url('../fonts/Lato/lato-lightitalic-webfont.eot');
+    src: url('../fonts/Lato/lato-lightitalic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/Lato/lato-lightitalic-webfont.woff2') format('woff2'),
+         url('../fonts/Lato/lato-lightitalic-webfont.woff') format('woff'),
+         url('../fonts/Lato/lato-lightitalic-webfont.ttf') format('truetype'),
+         url('../fonts/Lato/lato-lightitalic-webfont.svg#latolight_italic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Lato Hairline';
+    src: url('../fonts/Lato/lato-hairline-webfont.eot');
+    src: url('../fonts/Lato/lato-hairline-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/Lato/lato-hairline-webfont.woff2') format('woff2'),
+         url('../fonts/Lato/lato-hairline-webfont.woff') format('woff'),
+         url('../fonts/Lato/lato-hairline-webfont.ttf') format('truetype'),
+         url('../fonts/Lato/lato-hairline-webfont.svg#latohairline') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Lato Hairline Italic';
+    src: url('../fonts/Lato/lato-hairlineitalic-webfont.eot');
+    src: url('../fonts/Lato/lato-hairlineitalic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/Lato/lato-hairlineitalic-webfont.woff2') format('woff2'),
+         url('../fonts/Lato/lato-hairlineitalic-webfont.woff') format('woff'),
+         url('../fonts/Lato/lato-hairlineitalic-webfont.ttf') format('truetype'),
+         url('../fonts/Lato/lato-hairlineitalic-webfont.svg#latohairline_italic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Lato Bold';
+    src: url('../fonts/Lato/lato-bold-webfont.eot');
+    src: url('../fonts/Lato/lato-bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/Lato/lato-bold-webfont.woff2') format('woff2'),
+         url('../fonts/Lato/lato-bold-webfont.woff') format('woff'),
+         url('../fonts/Lato/lato-bold-webfont.ttf') format('truetype'),
+         url('../fonts/Lato/lato-bold-webfont.svg#latobold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Lato Bold Italic';
+    src: url('../fonts/Lato/lato-bolditalic-webfont.eot');
+    src: url('../fonts/Lato/lato-bolditalic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/Lato/lato-bolditalic-webfont.woff2') format('woff2'),
+         url('../fonts/Lato/lato-bolditalic-webfont.woff') format('woff'),
+         url('../fonts/Lato/lato-bolditalic-webfont.ttf') format('truetype'),
+         url('../fonts/Lato/lato-bolditalic-webfont.svg#latobold_italic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Lato Black';
+    src: url('../fonts/Lato/lato-black-webfont.eot');
+    src: url('../fonts/Lato/lato-black-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/Lato/lato-black-webfont.woff2') format('woff2'),
+         url('../fonts/Lato/lato-black-webfont.woff') format('woff'),
+         url('../fonts/Lato/lato-black-webfont.ttf') format('truetype'),
+         url('../fonts/Lato/lato-black-webfont.svg#latoblack') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Lato Black Italic';
+    src: url('../fonts/Lato/lato-blackitalic-webfont.eot');
+    src: url('../fonts/Lato/lato-blackitalic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/Lato/lato-blackitalic-webfont.woff2') format('woff2'),
+         url('../fonts/Lato/lato-blackitalic-webfont.woff') format('woff'),
+         url('../fonts/Lato/lato-blackitalic-webfont.ttf') format('truetype'),
+         url('../fonts/Lato/lato-blackitalic-webfont.svg#latoblack_italic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/*-------------------------Bunch of Noto Sans fonts---------------------------------*/
+/* Generated by Font Squirrel (http://www.fontsquirrel.com) on September 20, 2015 */
+@font-face {
+    font-family: 'Noto Sans Bold';
+    src: url('../fonts/Noto/Noto Sans/notosans-bold-webfont.eot');
+    src: url('../fonts/Noto/Noto Sans/notosans-bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/Noto/Noto Sans/notosans-bold-webfont.woff2') format('woff2'),
+         url('../fonts/Noto/Noto Sans/notosans-bold-webfont.woff') format('woff'),
+         url('../fonts/Noto/Noto Sans/notosans-bold-webfont.ttf') format('truetype'),
+         url('../fonts/Noto/Noto Sans/notosans-bold-webfont.svg#noto_sansbold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Noto Sans Bold Italic';
+    src: url('../fonts/Noto/Noto Sans/notosans-bolditalic-webfont.eot');
+    src: url('../fonts/Noto/Noto Sans/notosans-bolditalic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/Noto/Noto Sans/notosans-bolditalic-webfont.woff2') format('woff2'),
+         url('../fonts/Noto/Noto Sans/notosans-bolditalic-webfont.woff') format('woff'),
+         url('../fonts/Noto/Noto Sans/notosans-bolditalic-webfont.ttf') format('truetype'),
+         url('../fonts/Noto/Noto Sans/notosans-bolditalic-webfont.svg#noto_sansbold_italic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Noto Sans Italic';
+    src: url('../fonts/Noto/Noto Sans/notosans-italic-webfont.eot');
+    src: url('../fonts/Noto/Noto Sans/notosans-italic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/Noto/Noto Sans/notosans-italic-webfont.woff2') format('woff2'),
+         url('../fonts/Noto/Noto Sans/notosans-italic-webfont.woff') format('woff'),
+         url('../fonts/Noto/Noto Sans/notosans-italic-webfont.ttf') format('truetype'),
+         url('../fonts/Noto/Noto Sans/notosans-italic-webfont.svg#noto_sansitalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Noto Sans Regular';
+    src: url('../fonts/Noto/Noto Sans/notosans-regular-webfont.eot');
+    src: url('../fonts/Noto/Noto Sans/notosans-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/Noto/Noto Sans/notosans-regular-webfont.woff2') format('woff2'),
+         url('../fonts/Noto/Noto Sans/notosans-regular-webfont.woff') format('woff'),
+         url('../fonts/Noto/Noto Sans/notosans-regular-webfont.ttf') format('truetype'),
+         url('../fonts/Noto/Noto Sans/notosans-regular-webfont.svg#noto_sansregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/*-------------------------Bunch of Noto Serif fonts---------------------------------*/
+/* Generated by Font Squirrel (http://www.fontsquirrel.com) on September 20, 2015 */
+@font-face {
+    font-family: 'Noto Serif Bold';
+    src: url('../fonts/Noto/Noto Serif/notoserif-bold-webfont.eot');
+    src: url('../fonts/Noto/Noto Serif/notoserif-bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/Noto/Noto Serif/notoserif-bold-webfont.woff2') format('woff2'),
+         url('../fonts/Noto/Noto Serif/notoserif-bold-webfont.woff') format('woff'),
+         url('../fonts/Noto/Noto Serif/notoserif-bold-webfont.ttf') format('truetype'),
+         url('../fonts/Noto/Noto Serif/notoserif-bold-webfont.svg#noto_serifbold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Noto Serif Bold Italic';
+    src: url('../fonts/Noto/Noto Serif/notoserif-bolditalic-webfont.eot');
+    src: url('../fonts/Noto/Noto Serif/notoserif-bolditalic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/Noto/Noto Serif/notoserif-bolditalic-webfont.woff2') format('woff2'),
+         url('../fonts/Noto/Noto Serif/notoserif-bolditalic-webfont.woff') format('woff'),
+         url('../fonts/Noto/Noto Serif/notoserif-bolditalic-webfont.ttf') format('truetype'),
+         url('../fonts/Noto/Noto Serif/notoserif-bolditalic-webfont.svg#noto_serifbold_italic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Noto Serif Italic';
+    src: url('../fonts/Noto/Noto Serif/notoserif-italic-webfont.eot');
+    src: url('../fonts/Noto/Noto Serif/notoserif-italic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/Noto/Noto Serif/notoserif-italic-webfont.woff2') format('woff2'),
+         url('../fonts/Noto/Noto Serif/notoserif-italic-webfont.woff') format('woff'),
+         url('../fonts/Noto/Noto Serif/notoserif-italic-webfont.ttf') format('truetype'),
+         url('../fonts/Noto/Noto Serif/notoserif-italic-webfont.svg#noto_serifitalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Noto Serif Regular';
+    src: url('../fonts/Noto/Noto Serif/notoserif-regular-webfont.eot');
+    src: url('../fonts/Noto/Noto Serif/notoserif-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/Noto/Noto Serif/notoserif-regular-webfont.woff2') format('woff2'),
+         url('../fonts/Noto/Noto Serif/notoserif-regular-webfont.woff') format('woff'),
+         url('../fonts/Noto/Noto Serif/notoserif-regular-webfont.ttf') format('truetype'),
+         url('../fonts/Noto/Noto Serif/notoserif-regular-webfont.svg#noto_serifregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}

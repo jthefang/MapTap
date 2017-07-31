@@ -1,0 +1,303 @@
+/*
+    TOC
+    Project info div
+    Map container div
+    Reviews div
+
+    margins: 1em = 15.2 px
+*/
+
+/*Everything goes in here*/
+img.check_mark{
+    vertical-align: top;
+    margin-right: .2em;
+    height: 1em;
+    width: 1em;
+}
+
+div#page_content{
+	height: auto; /*******change this value (remove it) if the elements in this div overflow this height
+	this just basically makes the footer stay at the bottom of the fixed page********/
+    background-color: #F0F0F0;
+    border-bottom: .0658em solid #D9D9D9;
+    padding-bottom: 1em;
+}
+div.container{
+    background-color: white;
+    border-radius: 1px;
+    border: .0658em solid #D9D9D9;
+    margin: .7em;
+    padding: .8em;
+    overflow: auto;
+}
+div.left_page{
+    margin: .7em 0em .7em .7em; /*top right bot left*/
+}
+h2.container_title{
+    font-family: Helvetica, Arial, 'lucida grande',tahoma,verdana,arial,sans-serif;
+    font-weight: bold;
+    color: #9197a3;
+    margin-top: 0;
+    font-size: 1.188em;
+}
+div#left_container{
+    float: left;
+    width: 52%;
+    margin-right: 0;
+    margin-bottom: 0;
+}
+div#right_container{
+    width: 48%;
+    float:right;
+    margin-left: 0;
+    margin-bottom: 0;
+}
+/*-----------------------------------project_info container--------------------------------------*/
+div#project_info{
+    height: auto;
+    padding: 0 1em 1em;
+}
+h1#display_projectName{
+    margin-bottom: .3em;
+}
+/*div#display_projectRating{
+    display: inline-block;
+    margin-right: .4em;
+}
+span#projectRating_message{
+}*/
+span.info_descript{
+    font-weight: bold;
+}
+p#display_projectHost{
+    margin: .1em 0;
+    font-size: ;
+}
+img.host_propic{
+    vertical-align: bottom;
+    margin-left: .25em;
+}
+p#display_projectDateTime{
+    margin: .1em 0;
+    font-size: ;
+}
+p#display_projectAddr{
+    margin: .1em 0;
+    font-size: ;
+    width: 25em;
+}
+div#project_members{
+    margin-bottom: .5em;
+}
+img.member_propic{
+    vertical-align: top;
+    margin-right: .1em;
+}
+div#join_projectDiv{
+    display: inline-block;
+    margin-right: .5em; /*spacing w/ donate_to_projectDiv*/
+}
+div#donate_to_projectDiv{
+    display: inline-block;
+}
+p#display_projectDescript{
+
+}
+p#message_fbShareLike{
+    margin-bottom: .3em;
+}
+/*------------------------------------map_container-----------------------------------*/
+div#map_container{
+	height: 30em;
+    padding: .8em;
+}
+div#map_canvas{
+    float: left;
+    width: 65%;
+    height: 100%;
+    background-color: gray;
+}
+.location_search_controls {
+    margin-top: 16px;
+    border: 1px solid transparent;
+    border-radius: 2px 0 0 2px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    height: 32px;
+    outline: none;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+#location_search {
+    background-color: #fff;
+    padding: 0 11px 0 13px;
+    width: 400px;
+    font-family: Roboto;
+    font-size: 15px;
+    font-weight: 300;
+    text-overflow: ellipsis;
+}
+#location_search:focus {
+    border-color: #4d90fe;
+    margin-left: -1px;
+    padding-left: 14px;  /* Regular padding-left + 1. */
+    width: 401px;
+}
+div#map_directions{
+	margin-left: .5em;
+	width: 33%;
+	height: 100%; /*80% of the page_content div*/
+	float: left;
+	overflow: auto;
+}
+p#map_directions_prompt{
+	margin-left: .3em;
+}
+/*----------------------------------------Review container--------------------------------------------* /
+div#project_review_container{
+    overflow: hidden;
+}
+div.a_review{ /*spacing b/t reviews are determined by the jQuery in view_project.php* /
+}
+p#no_reviews_message{
+    
+}
+div.review_stars{
+    display: inline;
+    margin-right: .3em; /*spacing from the review title* /
+    margin-top: 0;
+}
+span.review_title{
+    color: #333;
+    font-weight: bold;
+    font-size: 1.05em;
+    margin-top: 0;
+}
+p.review_info{
+    color: #888;
+    font-size: .95em;
+    margin-top: .1em; /*spacing w/ review title and stars* /
+    margin-bottom: .4em;
+}
+p.review_content{
+    margin-top: 0;
+    margin-bottom: 0;
+}
+span.overflow_review_content{
+    display: none;
+}
+a#review_read_more_message{
+    margin-left: .4em; /*spacing w/review content paragraph* /
+}
+/*----------------------------------------give review/rating prompt-----------------------------------------* /
+button#rating_prompt{
+    font-size: .9em;
+    margin-bottom: .6em;
+    margin-top: 1em;
+}
+div#give_rating{ /*hidden by default* /
+
+}
+div#user_rating{
+    display: inline-block;
+    margin-right: .5em; /*spacing from span#star_prompt* /
+    margin-bottom: .3em; /*this will affect margin-bottom of span too* /
+}
+span#star_prompt{
+}
+input.rating_form_element{
+    width: 85%;
+    margin-bottom: .4em;
+    font-size: 1em;
+    height: 1.5em;
+    padding-left: .3em;
+}
+textarea.rating_form_element{
+    width: 95%;
+    padding-left: .3em;
+    font-size: 1em;
+}
+button#submit_review{
+    float: right;
+    margin-top: .3em;
+    font-size: .9em;
+}
+.error{
+    color: red;
+}
+.success{
+    color: green;
+}
+/*---------------------------------------pinned post container-------------------------------------------------*/
+div#pinned_posts_container{
+
+}
+    /*--------------------post to project div--------------------*/
+div#post_to_project_div{
+    border: .1em solid #D1D1D1;
+    padding: 0;
+    margin-bottom: 1em;
+}
+div#post_to_project_placeholder_text{
+    display: block;
+    font-family: 'Lato Regular', Arial, Verdana, Helvetica, sans-serif;
+    margin: .2em;
+    padding: .4em;
+    color: darkGray;
+    cursor: text;
+}
+div#post_content_area{
+    display: none; /*displayed on user click of the div*/
+}
+form#post_to_project_form{
+    
+}
+textarea.post_to_project_element{
+    margin: .2em;
+    margin-bottom: 0em;
+    width: 97.5%;
+    font-size: 1em;
+    border: 0px;
+    outline: none;
+    border-bottom: .1em solid #D1D1D1;
+}
+a#submit_post_to_project{
+    float: right;
+    margin-right: .5em;
+    margin-bottom: .25em;
+    font-size: .9em;
+}
+span#post_submitted_message{
+    float: right;
+    margin-top: .4em;
+    margin-right: .7em;
+    font-size: .9em;
+}
+ul#posts_on_display_list{
+    list-style: none;
+}
+li.post_list_element{
+    overflow: hidden; /*floating children do not add to the height of li element, this solves for it*/
+}
+li.post_list_element:not(:last-child){
+    margin-bottom: 1.2em;
+}
+div.post_author_pic{
+    float: left;
+}
+div.post_element_div{
+    float: left;
+    margin-left: .5em;
+}
+p.post_info{
+    margin: 0;
+}
+span.post_author{
+    font-weight: bold;
+}
+span.post_date{
+    margin-left: .9em;
+    font-size: .9em;
+}
+p.post_content{
+    margin: .3em 0em 0em .1em; /*top right bot left*/
+}

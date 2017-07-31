@@ -1,0 +1,208 @@
+/*  TABLE OF CONTENTS
+    Map
+        Map Message
+    storys Near You
+*/
+
+/********************************HOME PAGE (index.php)****************************/
+/*------------------left pane-------------*/
+/*div#left_pane{
+    width: 19.5%;
+    height: 79.7%;
+    float: left;
+    border: .1em solid black;
+}
+/*div#ads{
+    width: 100%;
+    height: 39%;
+    background-color: #996;
+    border: .1em solid black;
+}*/
+/*---------page content div---------*/
+div#page_content{
+    height: 88%;
+    width: 100%;
+    /*margin-bottom: 1em;*/
+    overflow: hidden;
+}
+
+/*---------------*map div-------------*/
+div#map_canvas{
+    float: left;
+    width: 100%;
+    height: 100%;
+    background-color: gray;
+    position: absolute;
+    top:0;
+    left:0;;
+}
+/*--------------map_message div--------------*/
+div#map_message {
+    position: relative;
+    padding: 1em;
+    width: 27em;
+    background: white;
+    /*border: .15em solid #D1D1D1;*/
+    border-radius: 2px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    outline: none;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+a#close{
+    display: block;
+    float: right;
+    width: 22px;
+    height: 21px;
+    margin: -.5em;
+    background:url('../../images/close_icon.png') no-repeat center center;
+}
+h1#message_storyName{
+    margin-bottom: .3em;
+    margin-top: .2em;
+}
+img#message_storyImg{
+    margin-right: 1em;
+    width: 400px;
+}
+div#message_storyRating{
+    display: inline-block;
+    margin-right: .4em;
+}
+span#storyRating{
+    font-size: .8em;
+}
+p#message_storyDate{
+    text-align: right;
+    font-size: .8em;
+    margin-bottom: 0;
+    margin-top: .4em;
+}
+p#message_storyAddress{
+    text-align: right;
+    font-size: .85em;
+    margin-top: .2em;
+    font-family: 'Lato Regular';
+}
+p#message_storyDescription{
+    margin-bottom: 0;
+}
+p#message_viewstoryPageLink{
+    margin-top: .4em;
+    margin-bottom: 0em;
+    text-align: right;
+}
+p#message_fbShareLike{
+    width: 70%;
+}
+/*-----------------------storys_near_you div----------------------*/
+div#storys_near_you{
+	float: right;
+	width: 23%;
+	height: 100%;
+    padding-left: .3125em;
+    overflow-y: auto;
+}
+p#location_prompt{
+    margin-left: .2em;
+    margin-right: 
+}
+/*input[type=text]#location_search{
+    width: 19.99em;
+    height: 1.5em;
+    font-size: 1em;
+    border: 1px solid #46A6EB;
+}*/
+.location_search_controls {
+    margin-top: 16px;
+    border: 1px solid transparent;
+    border-radius: 2px 0 0 2px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    height: 32px;
+    outline: none;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+#location_search {
+    background-color: #fff;
+    padding: 0 11px 0 13px;
+    width: 400px;
+    font-family: Roboto;
+    font-size: 15px;
+    font-weight: 300;
+    text-overflow: ellipsis;
+}
+
+#location_search:focus {
+    border-color: #4d90fe;
+    margin-left: -1px;
+    padding-left: 14px;  /* Regular padding-left + 1. */
+    width: 401px;
+}
+
+ul#viewable_locs{
+}
+li.viewable_locs_li{
+    display: inline;
+    list-style: none;
+    background-color: white;
+    border: 1px solid transparent;
+    border-radius: 2px 0 0 2px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    outline: none;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    padding: .2em .4em;
+    margin-right: .038em;
+    cursor: pointer;
+}
+li.viewable_locs_li:hover{
+    background-color: #F0F0F0;
+}
+
+h1#nearby_projs_heading{
+    margin-bottom: .3125em;   
+    margin-left: .2em;
+    font-family: 'Lato Bold';
+    font-size: 1.8em;
+}
+div#display_nearby_projs{
+}
+
+ul#nearby_projs_list{
+    margin-top: 0;
+    padding-left: .1em;
+}
+ul#nearby_projs_list li{ /*the border radii are adjusted in the mainIndexJS.js file*/
+    background-color: white;
+    cursor: pointer;
+    border: .0658em solid #BBC9BB;
+    padding-right: .375em;
+    margin-left: .1em;
+    margin-right: .375em;
+    list-style: none;
+}
+h2.nearby_projs_storyName{
+    margin-top: .3125em;
+    margin-left: .3125em;
+    margin-bottom: 0;
+    color: #292929;
+}
+p.nearby_projs_storyDescrip{
+    margin: .3em 0 0 .625em;
+    font-size: .85em;
+}
+p.nearby_projs_datetime{
+    text-align: right;
+    margin-top: .4em;
+    margin-bottom: 0em;
+    font-size: .9em;
+}
+p.nearby_projs_prox{
+    text-align: right;
+    margin-top: .1em;
+}

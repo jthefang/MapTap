@@ -1,0 +1,29 @@
+Project view page
+	allow host or members of the project to post to the project's "board"
+		limit number of postings per user for a period of time
+
+	allow anyone to participate in the "discussion" of the project
+
+Allow projects to be attached to clubs
+
+Images + other files (waivers) for a project to be uploaded
+
+crowdfunding - crowdtilt (https://github.com/Crowdtilt/crowdtilt-api-spec/) or paypal, google wallets?
+
+Facebook - like, comment, activity feed
+	FOR THE LIKE button and all social media plugins: the URL for the "like" should be the view_project (individual project showcase) page
+
+	Notifications for user?
+
+Limit the amount of markers somehow: proximity to the saved location (this can be found by allowing +- lat or lng in any given direction from the lat and lng coordinates of the location position). Only the top 10 most relevant by filter tags,, most populous (with the most participants), recent something. 
+
+3) BUG: facebook login has a 14 second redirect time limit: PAGE WILL CRASH (by displaying a long error message) afterwards
+	1) instead of diplaying error message --> Redirect to an ERROR PAGE (also redirect to this error page upon unsuccessful queries)
+
+Allow ratings of a user whose a project host, ratings of a project, ratings of a user as a volunteer
+	should the ratings of a host's projects average out to be the ratings of that host?\
+
+	should ratings be removed completely as simplicity may be more important in a new site?
+
+
+

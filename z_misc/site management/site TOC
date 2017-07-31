@@ -1,0 +1,3 @@
+1) set has_expired (col value in "projects" table in "treebox" database) in "getmarkers.php"
+2) facebook login w/ php sdk in "header.php"
+	1) must individually retrieve SESSION at the top of each page's file

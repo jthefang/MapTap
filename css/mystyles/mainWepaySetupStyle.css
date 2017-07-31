@@ -1,0 +1,16 @@
+div#page_content{
+    height: 87%; /*******change this value (remove it) if the elements in this div overflow this height
+    this just basically makes the footer stay at the bottom of the fixed page********/
+    background-color: #F0F0F0;
+    border-bottom: .0625em solid #D9D9D9;
+    padding-top: 1em; /*spacing from header and add_project form*/
+    padding-bottom: 1em;
+}
+div#wepay_container{
+	background-color: white;
+	border: 1px solid gray;
+	margin-left: auto;
+  	margin-right: auto;
+  	width: 60%;
+  	padding: 1em;
+}

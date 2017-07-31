@@ -1,0 +1,87 @@
+/*
+	TOC
+	1em = 29px (for the width of span elements)
+	1em = 93 px (for table stuff)
+*/
+
+div#page_content{
+	height: auto; /*******change this value (remove it) if the elements in this div overflow this height
+	this just basically makes the footer stay at the bottom of the fixed page********/
+	background-color: #F0F0F0;
+    border-bottom: .0658em solid #D9D9D9;
+    padding-bottom: 1em;
+}
+div#my_active_projs, #my_hosted_projs{
+	margin-bottom: 1em; /*spaces away from project memorial*/
+}
+span.projs_label{
+	margin: 1em;
+	width: 7.5em;
+	font-size: 1.3em;
+	display: inline-block;
+	font-family: Helvetica, Arial, 'lucida grande',tahoma,verdana,arial,sans-serif;
+	color: #515351;
+	font-weight: bold;
+}
+span.projs_label_description{
+	font-size: .7em;
+	display: inline-block;
+	font-family: Helvetica, Arial, 'lucida grande',tahoma,verdana,arial,sans-serif;
+	color: black;
+	font-weight: normal;
+}
+table.projs_table{
+	margin: 0 auto;
+	display: inline-block;
+	vertical-align: top;
+}
+tbody.projs_tbody{
+
+}
+tr.projs_tr{
+
+}
+td.projs_td{
+	width: 20em;
+	border: 0.0658em solid #B2C2B2;
+	padding: 0 1em;
+	background-color: white;
+	border-radius: .2em;
+}
+td.activeMember_proj{
+	padding-bottom: 1em;
+}
+td.proj_memorial{
+	border: .0658em solid #D9D9D9;
+}
+h1.projs_projectName{
+	font-size: ;
+	margin-bottom: .3em;
+}
+p.projs_projectDateTime{
+	text-align: right;
+	margin: .1em 0;
+	font-size: .9em;
+}
+p.projs_projectAddr{
+	text-align: right;
+	margin: .1em 0;
+	font-size: .9em;
+	font-weight: bold;
+}
+p.projs_projectDescrip{
+	margin: .3em 0;
+}
+p.edit_project_p{
+	text-align: right;
+}
+span.edit_link{
+	vertical-align: middle;
+	font-size: .9em;
+}
+img.edit_icon{
+	vertical-align: middle;
+	margin-left: .3em;
+	height: 1em;
+	width: 1em;
+}

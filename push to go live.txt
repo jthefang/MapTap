@@ -1,0 +1,13 @@
+Change redirect urls on:
+	1) viewproject.php (1)
+	2) editproject.php (2)
+	3) header.php (1)
+	4) mainJS.js (1)
+	6) facebook/logout.php (1)
+	7) phpfunctions/mainfunctions (1)
+	8) logout.php (1)
+
+***Change link to local_vars.php on phpfunctions/mainfunctions.php
+
+Task Scheduler url: "Update MapTap Stories"
+	for getting NYT API stories
